@@ -51,16 +51,16 @@
         /* SVG Touch Target Styles */
         .target-zone {
             fill: #ef4444;
-            opacity: 0.4;
+            opacity: 0.5;
             cursor: pointer;
             transition: all 0.2s ease;
-            stroke: #ef4444;
-            stroke-width: 2;
+            stroke: #ffffff;
+            stroke-width: 1.5;
         }
         .target-zone:hover, .target-zone.active {
             fill: #38bdf8;
             stroke: #38bdf8;
-            opacity: 0.85;
+            opacity: 0.9;
             filter: drop-shadow(0 0 10px #38bdf8);
         }
 
@@ -109,53 +109,61 @@
     <p class="subtitle">Official Subject Sensitivity Analysis</p>
 
     <div class="character-box">
-        <!-- More Realistic Vector Character -->
-        <svg viewBox="0 0 200 340" width="100%" height="280" xmlns="http://www.w3.org/2000/svg">
-            <!-- Head & Facial Hair Contour -->
-            <path d="M 82 42 Q 100 20 118 42 Q 120 62 115 72 Q 100 85 85 72 Q 80 62 82 42 Z" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1.5" />
-            <path d="M 83 58 Q 100 82 117 58 Q 115 75 100 82 Q 85 75 83 58" fill="#475569" opacity="0.85" /> <!-- Stubble / Beard -->
+        <!-- Realistic Anatomic Silhouette Graphic -->
+        <svg viewBox="0 0 200 360" width="100%" height="300" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#334155"/>
+                    <stop offset="100%" stop-color="#1e293b"/>
+                </linearGradient>
+            </defs>
+
+            <!-- Head, Hairline & Beard Silhouette -->
+            <path d="M 85 45 C 83 25, 117 25, 115 45 C 117 55, 116 68, 108 72 C 100 76, 92 72, 85 68 C 84 58, 83 50, 85 45 Z" fill="#64748b" />
+            <path d="M 86 52 C 88 74, 112 74, 114 52 C 112 78, 88 78, 86 52 Z" fill="#475569" /> <!-- Beard -->
             
-            <!-- Hoodie & Neck Area -->
-            <path d="M 75 75 Q 100 88 125 75 L 155 100 L 165 180 L 140 185 L 140 120 L 130 190 L 70 190 L 60 120 L 60 185 L 35 180 L 45 100 Z" fill="#334155" stroke="#1e293b" stroke-width="2" />
-            <path d="M 92 82 L 100 135 L 108 82" stroke="#f8fafc" stroke-width="2" fill="none" /> <!-- Drawstrings -->
-            <path d="M 70 190 L 130 190 L 130 198 L 70 198 Z" fill="#1e293b" /> <!-- Hoodie Hem -->
-
-            <!-- Tapered Joggers / Pants -->
-            <path d="M 70 198 L 130 198 L 125 285 L 105 285 L 100 220 L 95 220 L 95 285 L 75 285 Z" fill="#1e293b" stroke="#0f172a" stroke-width="1.5" />
-
-            <!-- Sneakers -->
-            <path d="M 60 285 L 93 285 Q 96 295 85 302 L 55 302 Q 52 292 60 285 Z" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" />
-            <path d="M 140 285 L 107 285 Q 104 295 115 302 L 145 302 Q 148 292 140 285 Z" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" />
-
-            <!-- INTERACTIVE TOUCH TARGET ZONES -->
+            <!-- Neck & Upper Torso (Hoodie Structure) -->
+            <path d="M 92 72 L 108 72 L 128 85 L 155 105 L 142 185 L 132 185 L 132 125 L 125 195 L 75 195 L 68 125 L 68 185 L 58 185 L 45 105 L 72 85 Z" fill="url(#bodyGrad)" stroke="#475569" stroke-width="1.5" />
             
-            <!-- 1. Ears/Neck Zone -->
-            <circle class="target-zone" cx="78" cy="50" r="9" onclick="showZone('ears')" />
-            <circle class="target-zone" cx="122" cy="50" r="9" onclick="showZone('ears')" />
+            <!-- Hoodie Cords -->
+            <path d="M 94 82 L 98 120 M 106 82 L 102 120" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
 
-            <!-- 2. Underarms Zone -->
-            <circle class="target-zone" cx="52" cy="118" r="12" onclick="showZone('underarms')" />
-            <circle class="target-zone" cx="148" cy="118" r="12" onclick="showZone('underarms')" />
+            <!-- Legs / Tapered Pants Silhouette -->
+            <path d="M 75 195 L 125 195 L 120 295 L 104 295 L 100 230 L 96 230 L 92 295 L 76 295 Z" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
 
-            <!-- 3. Belly Button Zone -->
-            <circle class="target-zone" cx="100" cy="155" r="13" onclick="showZone('belly')" />
+            <!-- Detailed Sneakers Silhouette -->
+            <path d="M 62 295 L 92 295 C 96 300, 95 312, 85 312 L 58 312 C 55 305, 58 298, 62 295 Z" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.5" />
+            <path d="M 138 295 L 108 295 C 104 300, 105 312, 115 312 L 142 312 C 145 305, 142 298, 138 295 Z" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.5" />
 
-            <!-- 4. Behind Knees Zone -->
-            <circle class="target-zone" cx="82" cy="240" r="11" onclick="showZone('knees')" />
-            <circle class="target-zone" cx="118" cy="240" r="11" onclick="showZone('knees')" />
+            <!-- TARGET NODES (Interactive Pins) -->
+            
+            <!-- 1. Ears / Neck -->
+            <circle class="target-zone" cx="82" cy="52" r="10" onclick="showZone('ears', event)" />
+            <circle class="target-zone" cx="118" cy="52" r="10" onclick="showZone('ears', event)" />
 
-            <!-- 5. Feet Zone -->
-            <circle class="target-zone" cx="72" cy="294" r="12" onclick="showZone('feet')" />
-            <circle class="target-zone" cx="128" cy="294" r="12" onclick="showZone('feet')" />
+            <!-- 2. Underarms -->
+            <circle class="target-zone" cx="58" cy="115" r="11" onclick="showZone('underarms', event)" />
+            <circle class="target-zone" cx="142" cy="115" r="11" onclick="showZone('underarms', event)" />
+
+            <!-- 3. Belly Button -->
+            <circle class="target-zone" cx="100" cy="155" r="12" onclick="showZone('belly', event)" />
+
+            <!-- 4. Behind Knees -->
+            <circle class="target-zone" cx="84" cy="250" r="11" onclick="showZone('knees', event)" />
+            <circle class="target-zone" cx="116" cy="250" r="11" onclick="showZone('knees', event)" />
+
+            <!-- 5. Feet -->
+            <circle class="target-zone" cx="74" cy="304" r="12" onclick="showZone('feet', event)" />
+            <circle class="target-zone" cx="126" cy="304" r="12" onclick="showZone('feet', event)" />
         </svg>
 
-        <div class="hint-text">👆 Tap red target spots on the figure above</div>
+        <div class="hint-text">👆 Tap the red tactical nodes on the silhouette</div>
     </div>
 
     <!-- Dynamic Detail Box -->
     <div class="info-card" id="info-box">
         <h3>Select a Target Zone</h3>
-        <div>Tap any highlighted red spot on the character to reveal sensitivity data and tactical reactions.</div>
+        <div>Tap any highlighted target node on the silhouette to reveal sensitivity data and tactical reactions.</div>
     </div>
 
     <button class="alarm-btn" onclick="triggerAlert()">⚠️ DO NOT ATTEMPT IN PERSON</button>
@@ -189,9 +197,11 @@
         }
     };
 
-    function showZone(zoneKey) {
+    function showZone(zoneKey, evt) {
         document.querySelectorAll('.target-zone').forEach(el => el.classList.remove('active'));
-        event.target.classList.add('active');
+        if (evt && evt.target) {
+            evt.target.classList.add('active');
+        }
 
         const data = zoneData[zoneKey];
         const box = document.getElementById('info-box');
